@@ -1,0 +1,10 @@
+<template name="apipage">
+	This is the api page. API paths are shown below:
+
+	<hr>
+
+	{{#each getAllAPIRoutes}}
+		<br />
+		<a href="{{this}}">{{this}}</a>
+	{{/each}}
+</template>
