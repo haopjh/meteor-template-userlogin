@@ -1,0 +1,10 @@
+<template name="route">
+	This is the home route page. All paths are shown below:
+
+	<hr>
+
+	{{#each getAllNormalRoutes}}
+		<br />
+		<a href="{{this}}">{{this}}</a>
+	{{/each}}
+</template>

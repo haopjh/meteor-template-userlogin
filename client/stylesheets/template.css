@@ -78,16 +78,19 @@ input, textarea, select {
 	padding-bottom: 10px;
 }
 .signup-firstname, .signup-lastname {
-	width: 100%;
+	width: 90%;
 	display: inline;
 }
 .signup-email {
-	width: 100%;
+	width: 95%;
 	margin-bottom: 20px;
 }
 .signup-terms {
+	width: 95%;
+	left: 2.5%;
 	clear: both;
 	text-align: left;
+	position: relative;
 	margin-bottom: 20px;
 }
 .signup-btn {
@@ -96,6 +99,31 @@ input, textarea, select {
     margin-bottom: 20px;
     border: 1px solid #C3C3C9;
 
+}
+
+/**********
+	ITEM
+**********/
+.create-container {
+	top: 50px;
+	left: 50%;
+	width: 300px;
+	position: relative;
+	margin-left: -150px;
+}
+.create-btn {
+	width: 240px;
+	cursor: pointer;
+	padding: 5px 0px;
+	margin-top: 35px;
+	font-weight: 400;
+	border-radius: 3px;
+	text-align: center;
+	border: 1px solid #898B94;
+}
+.create-input {
+	width: 300px;
+	margin-bottom: 10px;
 }
 
 
