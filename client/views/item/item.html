@@ -1,3 +1,12 @@
+
+
+<template name="item">
+	{{> createItem}}
+
+	{{> itemList}}
+</template>
+
+
 <template name="createItem">
 	<div class="create-container">
 	
@@ -18,4 +27,13 @@
 			Create
 		</div>
 	</div>
+</template>
+
+
+<template name="itemList">
+start of list
+	{{#each getAllLocation}}
+	hi
+		{{name}}
+	{{/each}}
 </template>

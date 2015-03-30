@@ -1,6 +1,10 @@
 Meteor.publish('allUsers', function(limit) {
 
 	return Meteor.users.find({},
-			{fields: {"username": 1}}
+			{fields: {"username": 1,"profile": 1}}
 		);
+});
+
+Meteor.publish('allLocation', function(limit) {
+	return Location.find();
 });

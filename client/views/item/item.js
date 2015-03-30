@@ -1,21 +1,25 @@
 Template.createItem.events({
 	"click .create-btn": function() {
-		Accounts.createUser({
-			profile: {
-				firstname: $(".signup-firstname").val(),
-				lastname: $(".signup-lastname").val(),
-			},
 
-			password: "1234567890",
-			email: $(".signup-email").val(),
-			username: $(".signup-email").val(),
+		var location = {
+			name: $(".create-name").val(),
+			description: $(".create-description").val(),
+			location: $(".create-location").val()
+		};
+
+		Meteor.call('location', location, function(err, locationId) {
+			console.log("yay");
+		});
+			
 				
-		}, function(err) {
-			if(!err) {
-        		Router.go("/home");
-			} else {
-				alert(err);
-			}
-		})
+		
     }
 });
+
+
+Template.itemList.helpers({
+	getAllLocation: function() {
+		console.log(Location.find().count());
+		return Location.find();
+	}
+})
