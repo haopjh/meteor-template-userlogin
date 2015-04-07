@@ -1,13 +1,13 @@
 
 
-<template name="item">
-	{{> createItem}}
+<template name="machinePage">
+	{{> newMachine}}
 
-	{{> itemList}}
+	{{> machineList}}
 </template>
 
 
-<template name="createItem">
+<template name="newMachine">
 	<div class="create-container">
 	
 		<div class="create-input">
@@ -30,9 +30,8 @@
 </template>
 
 
-<template name="itemList">
-start of list
-	{{#each getAllLocation}}
+<template name="machineList">
+	{{#each getAllMachines}}
 		{{name}}
 	{{/each}}
 </template>

@@ -1,13 +1,13 @@
-Template.createItem.events({
+Template.newMachine.events({
 	"click .create-btn": function() {
 
-		var location = {
+		var machine = {
 			name: $(".create-name").val(),
 			description: $(".create-description").val(),
 			location: $(".create-location").val()
 		};
 
-		Meteor.call('location', location, function(err, locationId) {
+		Meteor.call('newMachine', machine, function(err, machineId) {
 			console.log("yay");
 		});
 			
@@ -18,7 +18,7 @@ Template.createItem.events({
 
 
 Template.itemList.helpers({
-	getAllLocation: function() {
-		return Location.find();
+	getAllMachine: function() {
+		return Machine.find();
 	}
 })

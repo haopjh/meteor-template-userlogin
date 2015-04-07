@@ -8,3 +8,11 @@ Meteor.publish('allUsers', function(limit) {
 Meteor.publish('allLocation', function(limit) {
 	return Location.find();
 });
+
+Meteor.publish('allMachine', function(limit) {
+	return Machine.find();
+});
+
+Meteor.publish('allCompany', function(limit) {
+	return Company.find();
+});

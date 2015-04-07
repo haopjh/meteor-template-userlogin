@@ -1,0 +1,68 @@
+
+
+<template name="companyPage">
+	{{> newCompany}}
+
+	{{> companyList}}
+</template>
+
+
+<template name="newCompany">
+	<div class="header-title">Create a company</div>
+	<div class="create-container">
+		<div class="create-input">
+			<div class="create-input-title">Name</div>
+			<input class="create-name" type="text" placeholder="Name"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Description</div>
+			<input class="create-description" type="text" placeholder="Description"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Country</div>
+			<input class="create-country" type="text" placeholder="Country"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Address</div>
+			<input class="create-address" type="text" placeholder="Address"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Contact Number</div>
+			<input class="create-contact-number" type="text" placeholder="Contact Number"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Email</div>
+			<input class="create-email" type="text" placeholder="Email"/>
+		</div>
+
+		<div class="create-btn">
+			Create
+		</div>
+	</div>
+</template>
+
+
+<template name="companyList">
+	<div class="header-title">List of companies</div>
+	<div class="list-wrap">
+		{{#each getAllCompany}}
+			<div class="list-item">
+				<div class="item-photo">Photo will be here</div>
+				<div class="item-content">
+					<div class="item-name">{{name}}</div>
+					<div class="item-description">{{description}}</div>
+
+					{{#if address}}
+						<div class="item-address">Address: {{address}}</div>
+					{{/if}}
+					{{#if contact_number}}
+						<div class="item-contact-number">Contact Number: {{contact_number}}</div>
+					{{/if}}
+					{{#if email}}
+						<div class="item-email">Email: {{email}}</div>
+					{{/if}}
+				</div>
+			</div>
+		{{/each}}
+	</div>
+</template>
