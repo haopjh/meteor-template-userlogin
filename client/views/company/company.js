@@ -29,4 +29,17 @@ Template.companyList.helpers({
 	getAllCompany: function() {
 		return Company.find();
 	}
-})
+});
+
+
+Template.companyList.onRendered(function() {
+	this.$('.list-wrap').masonry({
+		itemSelector: '.list-item'
+	});
+});
+
+Template.companyItem.onRendered(function() {
+	$(".list-wrap").masonry()
+		.append(this.$(".list-item"))
+		.masonry("appended", this.$(".list-item"));
+});

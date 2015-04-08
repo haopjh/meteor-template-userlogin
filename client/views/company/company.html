@@ -46,23 +46,27 @@
 	<div class="header-title">List of companies</div>
 	<div class="list-wrap">
 		{{#each getAllCompany}}
-			<div class="list-item">
-				<div class="item-photo">Photo will be here</div>
-				<div class="item-content">
-					<div class="item-name">{{name}}</div>
-					<div class="item-description">{{description}}</div>
-
-					{{#if address}}
-						<div class="item-address">Address: {{address}}</div>
-					{{/if}}
-					{{#if contact_number}}
-						<div class="item-contact-number">Contact Number: {{contact_number}}</div>
-					{{/if}}
-					{{#if email}}
-						<div class="item-email">Email: {{email}}</div>
-					{{/if}}
-				</div>
-			</div>
+			{{> companyItem}}
 		{{/each}}
+	</div>
+</template>
+
+<template name="companyItem">
+	<div class="list-item">
+		<div class="item-photo">Photo will be here</div>
+		<div class="item-content">
+			<div class="item-name">{{name}}</div>
+			<div class="item-description">{{description}}</div>
+
+			{{#if address}}
+				<div class="item-address">Address: {{address}}</div>
+			{{/if}}
+			{{#if contact_number}}
+				<div class="item-contact-number">Contact Number: {{contact_number}}</div>
+			{{/if}}
+			{{#if email}}
+				<div class="item-email">Email: {{email}}</div>
+			{{/if}}
+		</div>
 	</div>
 </template>
