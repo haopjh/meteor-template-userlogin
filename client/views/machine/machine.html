@@ -6,21 +6,40 @@
 	{{> machineList}}
 </template>
 
-
 <template name="newMachine">
+	<div class="header-title">Create a machine</div>
 	<div class="create-container">
-	
 		<div class="create-input">
-			Name
+			<div class="create-input-title">Name</div>
 			<input class="create-name" type="text" placeholder="Name"/>
 		</div>
 		<div class="create-input">
-			Description
+			<div class="create-input-title">Description</div>
 			<input class="create-description" type="text" placeholder="Description"/>
 		</div>
 		<div class="create-input">
-			Location
+			<div class="create-input-title">Location</div>
 			<input class="create-location" type="text" placeholder="Location"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Price</div>
+			<input class="create-price" type="text" placeholder="Price"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Brand</div>
+			<input class="create-brand" type="text" placeholder="Brand"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Location</div>
+			<input class="create-brand" type="text" placeholder="Brand"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Manufactured Year</div>
+			<input class="create-manufactured-year" type="text" placeholder="Year"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Mileage</div>
+			<input class="create-mileage" type="text" placeholder="mileage"/>
 		</div>
 
 		<div class="create-btn">
@@ -31,7 +50,30 @@
 
 
 <template name="machineList">
-	{{#each getAllMachines}}
-		{{name}}
-	{{/each}}
+	<div class="header-title">List of companies</div>
+	<div class="list-wrap">
+		{{#each getAllMachine}}
+			{{> machineItem}}
+		{{/each}}
+	</div>
+</template>
+
+<template name="machineItem">
+	<div class="list-item">
+		<div class="item-photo">Photo will be here</div>
+		<div class="item-content">
+			<div class="item-name">{{name}}</div>
+			<div class="item-description">{{description}}</div>
+
+			{{#if address}}
+				<div class="item-address">Address: {{address}}</div>
+			{{/if}}
+			{{#if contact_number}}
+				<div class="item-contact-number">Contact Number: {{contact_number}}</div>
+			{{/if}}
+			{{#if email}}
+				<div class="item-email">Email: {{email}}</div>
+			{{/if}}
+		</div>
+	</div>
 </template>
