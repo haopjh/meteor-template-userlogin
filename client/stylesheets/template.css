@@ -196,7 +196,7 @@ input, textarea, select {
 	width: 100%;
 	height: 100%;
 	position: fixed;
-	background: url("/img/wallpaper.png") no-repeat center center fixed;
+	background: url("/img/masthead-index.png") no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -207,5 +207,38 @@ input, textarea, select {
 	-moz-filter: blur(5px);
 	-o-filter: blur(5px);
 	-ms-filter: blur(5px);
+}
+.home-wrap {
+	top: 50%;
+	width: 100%;
+	position: fixed;
+	margin-top: -200px;
+}
+.home-search {
+	left: 25%;
+	width: 50%;
+	height: 70px;
+	font-size: 35px;
+	margin-top: 50px;
+	position: relative;
+	border-radius: 6px;
+	padding-left: 20px;
+}
+.home-search:focus {
+  	outline-color: initial;
+}
+.home-title {
+	width: 100%;
+	color: #FFFFFF;
+	font-size: 75px;
+	position: relative;
+	text-align: center;
+}
+.home-description {
+	width: 100%;
+	color: #FFFFFF;
+	font-size: 29px;
+	position: relative;
+	text-align: center;
 }
 
