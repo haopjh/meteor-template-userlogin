@@ -96,7 +96,6 @@ a {
   border-top-right-radius: 3px;
 }
 .navbar-item.active {
-	cursor: default;
 	background-color: #E8E8EA;
 }
 

@@ -7,7 +7,7 @@ Template.machineupload.events({
             path:"machines"
         },function(e,r){
             console.log(r);
-            Meteor.call('addPhoto', machineId, r.url, function(err, success) {
+            Meteor.call('addMachinePhoto', machineId, r.url, function(err, success) {
                 console.log(success);
             });
         });

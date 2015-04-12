@@ -66,14 +66,14 @@ Template.machineItemEditPage.events({
     },
 
     "click .edit-photo-item": function() {
-    	// S3.delete(this.toString(), function(err, result){
-    	// 	if(err) {
-    	// 		console.log(err);
-    	// 	} else {
-    	// 		console.log(result);
-    	// 	}
-    	// });
-    	Meteor.call("removePhoto", Session.get("machineId"), this.toString());
+    	S3.delete(this.toString(), function(err, result){
+    		if(err) {
+    			console.log(err);
+    		} else {
+    			console.log(result);
+    		}
+    	});
+    	// Meteor.call("removeMachinePhoto", Session.get("machineId"), this.toString());
     },
 
     "click .delete-btn": function() {

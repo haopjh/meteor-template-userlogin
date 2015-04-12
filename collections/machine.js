@@ -18,30 +18,24 @@ Meteor.methods({
 		Machine.update({_id: machineId}, {
 			$set: machine
 		});
-
-	    return machineId;
 	},
 
 	removeMachine: function(machineId) {
 		Machine.remove({_id: machineId});
 	},
 
-	addPhoto: function(machineId, url){
+	addMachinePhoto: function(machineId, url){
 		Machine.update({_id: machineId}, {
 			$push : {photo_url: url}
 		});
-
-	    return machineId;
 	},
 
-	removePhoto: function(machineId, url){
+	removeMachinePhoto: function(machineId, url){
 		//Gets list of urls
 		var machine = Machine.findOne(machineId);
 		var index = machine.photo_url.indexOf(url);
 		machine.photo_url.splice(index, 1);
 		Machine.update({_id: machineId}, machine);
-
-	    return machineId;
 	}
 
 });
