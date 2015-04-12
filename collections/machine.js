@@ -4,11 +4,42 @@ Meteor.methods({
 	newMachine: function(machineAttributes){
 		
 
-		var machine = _.extend(_.pick(machineAttributes, 'name', 'description', 'location', 'price', 'brand', 'manufactured-year', 'mileage'), {
-			timestampCreated: new Date().getTime()
+		var machine = _.extend(_.pick(machineAttributes, 'type', 'make', 'model', 'description', 'location', 'price', 'year', 'mileage'), {
+			timestampCreated: new Date().getTime(),
+			photo_url: []
 		});
 
 		var machineId = Machine.insert(machine);
+
+	    return machineId;
+	},
+
+	editMachine: function(machineId, machine){
+		Machine.update({_id: machineId}, {
+			$set: machine
+		});
+
+	    return machineId;
+	},
+
+	removeMachine: function(machineId) {
+		Machine.remove({_id: machineId});
+	},
+
+	addPhoto: function(machineId, url){
+		Machine.update({_id: machineId}, {
+			$push : {photo_url: url}
+		});
+
+	    return machineId;
+	},
+
+	removePhoto: function(machineId, url){
+		//Gets list of urls
+		var machine = Machine.findOne(machineId);
+		var index = machine.photo_url.indexOf(url);
+		machine.photo_url.splice(index, 1);
+		Machine.update({_id: machineId}, machine);
 
 	    return machineId;
 	}

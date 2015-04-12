@@ -7,3 +7,5 @@
 meteor-platform
 iron:router
 accounts-password
+lepozepo:s3
+mrt:jquery-imagesloaded

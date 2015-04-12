@@ -11,12 +11,7 @@ Template.newCompany.events({
 		};
 
 		Meteor.call('newCompany', company, function(err, companyId) {
-			$(".create-name").val("");
-			$(".create-description").val("");
-			$(".create-country").val("");
-			$(".create-address").val("");
-			$(".create-contact-number").val("");
-			$(".create-email").val("");
+			$("input").val("");
 		});
 			
 				
@@ -33,13 +28,12 @@ Template.companyList.helpers({
 
 
 Template.companyList.onRendered(function() {
-	this.$('.list-wrap').masonry({
+	this.$('.company-list').masonry({
 		itemSelector: '.list-item'
 	});
 });
 
 Template.companyItem.onRendered(function() {
-	$(".list-wrap").masonry()
-		.append(this.$(".list-item"))
-		.masonry("appended", this.$(".list-item"));
+	$(".company-list").masonry()
+		.masonry('appended', this.$(".list-item-company"));
 });

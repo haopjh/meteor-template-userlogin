@@ -2,25 +2,19 @@ Template.newMachine.events({
 	"click .create-btn": function() {
 
 		var machine = {
-			name: $(".create-name").val(),
+			type: $(".create-type").val(),
+			make: $(".create-make").val(),
+			model: $(".create-model").val(),
 			description: $(".create-description").val(),
-			country: $(".create-country").val(),
-			address: $(".create-address").val(),
-			contact_number: $(".create-contact-number").val(),
-			email: $(".create-email").val(),
+			location: $(".create-location").val(),
+			price: $(".create-price").val(),
+			year: $(".create-year").val(),
+			mileage: $(".create-mileage").val(),
 		};
 
 		Meteor.call('newMachine', machine, function(err, machineId) {
-			$(".create-name").val("");
-			$(".create-description").val("");
-			$(".create-country").val("");
-			$(".create-address").val("");
-			$(".create-contact-number").val("");
-			$(".create-email").val("");
+			$("input").val("");
 		});
-			
-				
-		
     }
 });
 
@@ -33,13 +27,58 @@ Template.machineList.helpers({
 
 
 Template.machineList.onRendered(function() {
-	this.$('.list-wrap').masonry({
-		itemSelector: '.list-item'
-	});
+	this.$('.machine-list').imagesLoaded(function() {
+		this.$('.machine-list').masonry({
+			itemSelector: '.list-item'
+		});
+	}.bind(this));
+		
 });
 
 Template.machineItem.onRendered(function() {
-	$(".list-wrap").masonry()
-		.append(this.$(".list-item"))
-		.masonry("appended", this.$(".list-item"));
+	$(".machine-list").masonry()
+		.masonry("appended", this.$(".list-item-machine"));
+});
+
+Template.machineItem.helpers({
+	"getFirstPhoto": function() {
+		return this.photo_url ? this.photo_url[0]: "";
+	}
+})
+
+Template.machineItemEditPage.events({
+	"click .create-btn": function() {
+
+		var machine = {
+			type: $(".create-type").val(),
+			make: $(".create-make").val(),
+			model: $(".create-model").val(),
+			description: $(".create-description").val(),
+			location: $(".create-location").val(),
+			price: $(".create-price").val(),
+			year: $(".create-year").val(),
+			mileage: $(".create-mileage").val(),
+		};
+
+		Meteor.call('editMachine', this._id, machine, function(err) {
+			Router.go("/machine/"+this._id);
+		}.bind(this));
+    },
+
+    "click .edit-photo-item": function() {
+    	// S3.delete(this.toString(), function(err, result){
+    	// 	if(err) {
+    	// 		console.log(err);
+    	// 	} else {
+    	// 		console.log(result);
+    	// 	}
+    	// });
+    	Meteor.call("removePhoto", Session.get("machineId"), this.toString());
+    },
+
+    "click .delete-btn": function() {
+    	Meteor.call("removeMachine", Session.get("machineId"), function() { 
+    		Router.go("/machine");
+    	});
+    }
 });

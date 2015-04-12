@@ -1,9 +1,8 @@
 
 
 <template name="companyPage">
-	{{> newCompany}}
-
 	{{> companyList}}
+	{{> newCompany}}
 </template>
 
 
@@ -44,7 +43,7 @@
 
 <template name="companyList">
 	<div class="header-title">List of companies</div>
-	<div class="list-wrap">
+	<div class="list-wrap company-list">
 		{{#each getAllCompany}}
 			{{> companyItem}}
 		{{/each}}
@@ -52,20 +51,20 @@
 </template>
 
 <template name="companyItem">
-	<div class="list-item">
+	<div class="list-item list-item-company">
 		<div class="item-photo">Photo will be here</div>
 		<div class="item-content">
 			<div class="item-name">{{name}}</div>
 			<div class="item-description">{{description}}</div>
 
 			{{#if address}}
-				<div class="item-address">Address: {{address}}</div>
+				<div class="item-misc">Address: {{address}}</div>
 			{{/if}}
 			{{#if contact_number}}
-				<div class="item-contact-number">Contact Number: {{contact_number}}</div>
+				<div class="item-misc">Contact Number: {{contact_number}}</div>
 			{{/if}}
 			{{#if email}}
-				<div class="item-email">Email: {{email}}</div>
+				<div class="item-misc">Email: {{email}}</div>
 			{{/if}}
 		</div>
 	</div>

@@ -1,45 +1,45 @@
 
 
 <template name="machinePage">
-	{{> newMachine}}
 
 	{{> machineList}}
+	{{> newMachine}}
 </template>
 
 <template name="newMachine">
 	<div class="header-title">Create a machine</div>
 	<div class="create-container">
 		<div class="create-input">
-			<div class="create-input-title">Name</div>
-			<input class="create-name" type="text" placeholder="Name"/>
+			<div class="create-input-title">Type</div>
+			<input class="create-type" type="text" placeholder="Excavator"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Make</div>
+			<input class="create-make" type="text" placeholder="Kobelco"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Model</div>
+			<input class="create-model" type="text" placeholder="SK220-3"/>
 		</div>
 		<div class="create-input">
 			<div class="create-input-title">Description</div>
-			<input class="create-description" type="text" placeholder="Description"/>
+			<input class="create-description" type="text" placeholder="Well maintained."/>
 		</div>
 		<div class="create-input">
 			<div class="create-input-title">Location</div>
-			<input class="create-location" type="text" placeholder="Location"/>
+			<input class="create-location" type="text" placeholder="Singapore"/>
 		</div>
 		<div class="create-input">
 			<div class="create-input-title">Price</div>
-			<input class="create-price" type="text" placeholder="Price"/>
+			<input class="create-price" type="text" placeholder="24000"/>
 		</div>
 		<div class="create-input">
-			<div class="create-input-title">Brand</div>
-			<input class="create-brand" type="text" placeholder="Brand"/>
+			<div class="create-input-title">Year</div>
+			<input class="create-year" type="text" placeholder="1989"/>
 		</div>
 		<div class="create-input">
-			<div class="create-input-title">Location</div>
-			<input class="create-brand" type="text" placeholder="Brand"/>
-		</div>
-		<div class="create-input">
-			<div class="create-input-title">Manufactured Year</div>
-			<input class="create-manufactured-year" type="text" placeholder="Year"/>
-		</div>
-		<div class="create-input">
-			<div class="create-input-title">Mileage</div>
-			<input class="create-mileage" type="text" placeholder="mileage"/>
+			<div class="create-input-title">Mileage (Hours)</div>
+			<input class="create-mileage" type="text" placeholder="300"/>
 		</div>
 
 		<div class="create-btn">
@@ -50,8 +50,8 @@
 
 
 <template name="machineList">
-	<div class="header-title">List of companies</div>
-	<div class="list-wrap">
+	<div class="header-title">List of machines</div>
+	<div class="list-wrap machine-list">
 		{{#each getAllMachine}}
 			{{> machineItem}}
 		{{/each}}
@@ -59,21 +59,87 @@
 </template>
 
 <template name="machineItem">
-	<div class="list-item">
-		<div class="item-photo">Photo will be here</div>
+	<div class="list-item list-item-machine">
+	<a href="/machine/{{_id}}/edit">
+		<img class="item-photo" src="{{getFirstPhoto}}"/>
 		<div class="item-content">
-			<div class="item-name">{{name}}</div>
+			<div class="item-name">{{type}} | {{make}} | {{model}}</div>
 			<div class="item-description">{{description}}</div>
 
-			{{#if address}}
-				<div class="item-address">Address: {{address}}</div>
+			{{#if price}}
+				<div class="item-misc">Price: USD ${{price}}</div>
 			{{/if}}
-			{{#if contact_number}}
-				<div class="item-contact-number">Contact Number: {{contact_number}}</div>
+			{{#if location}}
+				<div class="item-misc">Location: {{location}}</div>
 			{{/if}}
-			{{#if email}}
-				<div class="item-email">Email: {{email}}</div>
+			{{#if year}}
+				<div class="item-misc">Manufactured Year: {{year}}</div>
+			{{/if}}
+			{{#if mileage}}
+				<div class="item-misc">Mileage: {{mileage}} hours</div>
 			{{/if}}
 		</div>
+	</a>
+	</div>
+</template>
+
+
+<template name="machineItemPage">
+	<!-- {{#with getMachine}} -->
+		{{type}} | {{model}} | {{price}}
+	<!-- {{/with}} -->
+	<br />
+	<a href="/machine/{{_id}}/edit" class="edit-btn">Edit Machine</a>
+</template>
+
+<template name="machineItemEditPage">
+	<div class="edit-container machine-id-{{_id}}">
+		<div class="create-input">
+			<div class="create-input-title">Type</div>
+			<input class="create-type" type="text" value="{{type}}"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Make</div>
+			<input class="create-make" type="text" value="{{make}}"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Model</div>
+			<input class="create-model" type="text" value="{{model}}"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Description</div>
+			<input class="create-description" type="text" value="{{description}}"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Location</div>
+			<input class="create-location" type="text" value="{{location}}"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Price</div>
+			<input class="create-price" type="text" value="{{price}}"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Year</div>
+			<input class="create-year" type="text" value="{{year}}"/>
+		</div>
+		<div class="create-input">
+			<div class="create-input-title">Mileage (Hours)</div>
+			<input class="create-mileage" type="text" value="{{mileage}}"/>
+		</div>
+
+		<div class="create-btn">
+			Save
+		</div>
+		<div class="delete-btn">
+			DELETE MACHINE
+		</div>
+
+		{{#each photo_url}}
+			<img class="edit-photo-item" src="{{this}}"/>
+		{{/each}}
+
+		<br />
+		Upload image for this machine
+		{{> machineupload}}
 	</div>
 </template>
