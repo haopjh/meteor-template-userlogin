@@ -60,26 +60,26 @@
 
 <template name="machineItem">
 	<div class="list-item list-item-machine">
-	<a href="/machine/{{_id}}/edit">
-		<img class="item-photo" src="{{getFirstPhoto}}"/>
-		<div class="item-content">
-			<div class="item-name">{{type}} | {{make}} | {{model}}</div>
-			<div class="item-description">{{description}}</div>
+		<a href="/machine/{{_id}}/edit">
+			<img class="item-photo" src="{{getFirstPhoto}}"/>
+			<div class="item-content">
+				<div class="item-name">{{type}} | {{make}} | {{model}}</div>
+				<div class="item-description">{{description}}</div>
 
-			{{#if price}}
-				<div class="item-misc">Price: USD ${{price}}</div>
-			{{/if}}
-			{{#if location}}
-				<div class="item-misc">Location: {{location}}</div>
-			{{/if}}
-			{{#if year}}
-				<div class="item-misc">Manufactured Year: {{year}}</div>
-			{{/if}}
-			{{#if mileage}}
-				<div class="item-misc">Mileage: {{mileage}} hours</div>
-			{{/if}}
-		</div>
-	</a>
+				{{#if price}}
+					<div class="item-misc">Price: USD ${{price}}</div>
+				{{/if}}
+				{{#if location}}
+					<div class="item-misc">Location: {{location}}</div>
+				{{/if}}
+				{{#if year}}
+					<div class="item-misc">Manufactured Year: {{year}}</div>
+				{{/if}}
+				{{#if mileage}}
+					<div class="item-misc">Mileage: {{mileage}} hours</div>
+				{{/if}}
+			</div>
+		</a>
 	</div>
 </template>
 

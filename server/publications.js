@@ -10,7 +10,9 @@ Meteor.publish('allLocation', function(limit) {
 });
 
 Meteor.publish('allMachine', function(limit) {
-	return Machine.find();
+	return Machine.find({},{
+		sort: {type: 1}
+	});
 });
 
 Meteor.publish('allCompany', function(limit) {

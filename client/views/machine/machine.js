@@ -26,18 +26,19 @@ Template.machineList.helpers({
 });
 
 
-Template.machineList.onRendered(function() {
+Template.machinePage.onRendered(function() {
 	this.$('.machine-list').imagesLoaded(function() {
-		this.$('.machine-list').masonry({
-			itemSelector: '.list-item'
+		this.$('.machine-list').isotope({
+			itemSelector: '.list-item-machine'
 		});
 	}.bind(this));
-		
 });
 
 Template.machineItem.onRendered(function() {
-	$(".machine-list").masonry()
-		.masonry("appended", this.$(".list-item-machine"));
+	this.$(".list-item-machine").imagesLoaded(function() {
+		$(".machine-list").isotope()
+			.isotope("appended", this.$(".list-item-machine"));
+	}.bind(this));
 });
 
 Template.machineItem.helpers({
@@ -66,14 +67,17 @@ Template.machineItemEditPage.events({
     },
 
     "click .edit-photo-item": function() {
-    	S3.delete(this.toString(), function(err, result){
+    	var url = this.toString();
+    	var relativeUrl = url.replace("http://s3-ap-southeast-1.amazonaws.com/sgmachinemart","");
+    	console.log(relativeUrl);
+    	S3.delete(relativeUrl, function(err, result){
     		if(err) {
     			console.log(err);
     		} else {
     			console.log(result);
     		}
     	});
-    	// Meteor.call("removeMachinePhoto", Session.get("machineId"), this.toString());
+		Meteor.call("removeMachinePhoto", Session.get("machineId"), this.toString());
     },
 
     "click .delete-btn": function() {
